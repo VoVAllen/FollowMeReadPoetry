@@ -1,0 +1,267 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: arial, helv;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after
+{
+    /*content: '';*/
+    content: none;
+}
+
+/* remember to define visible focus styles! 
+:focus {
+  outline: ?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+body
+{
+    font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #FFF;
+    margin: 0 auto;
+}
+
+.main {
+    width: 100% -40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    border-left-width: 2px;
+
+}
+
+.sidebar {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1000;
+    position: fixed;
+    width: 80px;
+    right: -70px;
+    top: 0;
+    background: #007777;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.sidebar.active {
+    right: 0px;
+}
+
+.sidebar a:link {
+    text-decoration: none;
+    color: none;
+}
+
+.sidebar a:hover {
+    text-decoration: none;
+    color: none;
+}
+
+.sidebar a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar a {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    color: #007777;
+    padding-top: 48px;
+    display: block;
+    height: 24px;
+    width: 80px;
+    padding-bottom: 48px;
+}
+
+.sidebar a.active {
+    color: #fff;
+    background-color: #333;
+}
+
+.bar {
+    width: 2px;
+    background-color: black;
+    margin-left: 0px;
+    border-left: 3px;
+    height: 100px;
+    position: absolute;
+    left: 20px;
+}
+
+.poem {
+    font: 18px "Times New Roman", Times, serif;
+    height: 100% +300px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+}
+
+.title {
+    font: 48px "Times New Roman", Times, serif;
+    font-weight: bold;
+
+}
+
+.author {
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 48px;
+}
+
+.sentence {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.sentence.active {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    color: #007777;
+}
+
+span.active {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    color: red;
+}
+
+.comments {
+    width: 100% -60px;
+    height: 100px;
+    background-color: #fff;
+    bottom: 0px;
+}
+
+.btn {
+    position: fixed;
+    left: 0px;
+    bottom: 10px;
+    float: left;
+    width: 50px;
+}
+
+.card {
+    position: fixed;
+    width: 100%;
+    line-height: 18px;
+    left: 50px;
+    bottom: -24px;
+    font-size: 12px;
+    border: none;
+    background-color: #007777;
+    padding: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: white;
+    border-radius: 4px;
+    float: left;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.card.active {
+    bottom: 20px;
+    z-index: 100;
+}
+
+.part {
+    padding-top: 200px;
+    padding-bottom: 100px;
+}
+
+footer {
+    text-align: center;
+    padding-top: 200px;
+    height: 300px;
+}
+
+h1 {
+    font: 30px "Times New Roman", Times, serif;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
