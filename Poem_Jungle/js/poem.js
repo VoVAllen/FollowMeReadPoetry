@@ -2,9 +2,9 @@
  * Created by Zeng on 2015/7/2.
  */
 
-//Õâ¸ö£¬´æ´¢µ÷½ÚµÄÊ±¼äÖµ
-//sessionStorageÊÇHTML5µÄĞÂ¶«Î÷
-//sessionStorage´ú±í×ÅÊµ¼Ê¸è´ÊÊ±¼äºÍlrc¸è´ÊÊ±¼ä²î
+//è¿™ä¸ªï¼Œå­˜å‚¨è°ƒèŠ‚çš„æ—¶é—´å€¼
+//sessionStorageæ˜¯HTML5çš„æ–°ä¸œè¥¿
+//sessionStorageä»£è¡¨ç€å®é™…æ­Œè¯æ—¶é—´å’Œlrcæ­Œè¯æ—¶é—´å·®
 if(!sessionStorage.time)
 {
     sessionStorage.time=0;
@@ -22,14 +22,14 @@ var a="\
     [00:53.20]Then took the other, as just as fair,\
     [00:57.39]And having perhaps the better claim,\
     [01:00.80]Because it was grassy and wanted wear;\
-    [01:04.59]Though as for that the passing there  Had worn them really about the same,\
+    [01:04.59]Though as for that the passing there  Had really worn them about the same,\
     [01:15.90]And both that morning equally lay\
     [01:20.90]In leaves no step had trodden black.\
     [01:26.00]Oh, I kept the first for another day!\
     [01:32.00]Yet knowing how way leads on to way,  I doubted if I should ever come back.\
     [01:43.39]I shall be telling this with a sigh\
     [01:46.00]Somewhere ages and ages hence:\
-    [01:51.60]Two roads diverged in a wood, and I¡ª\
+    [01:51.60]Two roads diverged in a wood, and I-\
     [01:57.20]I took the one less traveled by,\
     [02:03.00]And that has made all the difference.";
 var timeArray=new Array();
@@ -47,10 +47,10 @@ function parse(lrc)
     //Skip str[0]
     for(var i=1;i<str.length;i++)
     {
-        //str[i] format is 00:11.22]ÎÒ
+        //str[i] format is 00:11.22]æˆ‘
         //time format is 00:11.22
         var time=str[i].split(']')[0];
-        //lyrics format is "ÎÒ"
+        //lyrics format is "æˆ‘"
         var lyrics=str[i].split(']')[1];
         var minute=time.split(":")[0];
         var second=time.split(":")[1];
