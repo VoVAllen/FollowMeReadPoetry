@@ -9,10 +9,6 @@ if(!sessionStorage.time)
 {
     sessionStorage.time=0;
 }
-//var reader = new FileReader();
-//reader.onload = function()
-//{
-//}
 var a="\
     [00:29.40]Two roads diverged in a yellow wood,\
     [00:34.79]And sorry I could not travel both\
@@ -75,44 +71,53 @@ function update()
     {
         $('.sentence').each(function()
         {
-            $(this).removeClass('activated');
+            $(this).removeClass('active');
         });
         var index = parseInt(event.target.id);
         var time = timeArray[index];
-        var all = document.getElementById('allLyrics');
-        var audio = document.getElementById('test');
+        //var all = document.getElementById('allLyrics');
+        var audio = document.getElementById('poemAudio');
         audio.currentTime = time;
+        audio.pause();
     });
     var i=getcurrent();
     var j=i-1;
-    if($('#'+j) != null){$('#'+j).removeClass('activated');}
-    $('#'+i).addClass('activated');
+    if($('#'+j) != null)
+    {
+        $('#'+j).removeClass('active');
+    }
+    if($('#'+i) != null)
+    {
+        $('#'+i).addClass('active');
+    }
+}
+//Sidebar button controlling the audio
+function btnControl()
+{
+    var $audio = $('#poemAudio');
+    $('#control').click(function()
+    {
+       $audio.play();
+    });
 }
 //Compare the audio time with lyrics time and get current lyrics
 function getcurrent()
 {
-    var a=document.getElementById("test");
+    var au=document.getElementById("poemAudio");
+    var allLyrics=document.getElementById("allLyrics");
     var i=0;
+    if(au.currentTime>=timeArray[timeArray.length-1])
+    {
+        return timeArray.length-1;
+    }
     for(i=0;i<timeArray.length;i++)
     {
-        if(timeArray[i]>=a.currentTime)
+        if(timeArray[i]>au.currentTime)
         {
             return i-1;
         }
     }
     return i-2;
-}
-//forward for 2s
-function back()
-{
-    sessionStorage.time=parseInt(sessionStorage.time)-2;
-    parse(a);
-}
-//skip for 2s
-function forward()
-{
-    sessionStorage.time=parseInt(sessionStorage.time)+2;
-    parse(a);
 }
 //Run
 $(function()

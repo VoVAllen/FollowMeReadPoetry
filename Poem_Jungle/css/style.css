@@ -20,6 +20,9 @@ time, mark, audio, video
     vertical-align: baseline;
 }
 
+/*div{*/
+/*word-wrap: break-word;*/
+/*}*/
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section
@@ -31,6 +34,8 @@ body
 {
     line-height: 1;
 }
+
+
 
 ol, ul
 {
@@ -78,10 +83,11 @@ body
 
 .main {
     width: 100% -40px;
+    height: 100%;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: 20px;
-    border-left-width: 2px;
+    /*border-left-width: 2px;*/
 
 }
 
@@ -119,11 +125,12 @@ body
     color: #fff;
 }
 
-.sidebar a {
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
+.sidebar a
+{
+    /*-webkit-transition: all 0.2s ease;*/
+    /*-moz-transition: all 0.2s ease;*/
+    /*-o-transition: all 0.2s ease;*/
+    /*transition: all 0.2s ease;*/
     color: #007777;
     padding-top: 48px;
     display: block;
@@ -150,11 +157,12 @@ body
 .poem {
     font: 18px "Times New Roman", Times, serif;
     height: 100% +300px;
-    padding-top: 200px;
+    /*padding-top: 50px;*/
     padding-bottom: 100px;
 }
 
 .title {
+    padding-top: 75px;
     font: 48px "Times New Roman", Times, serif;
     font-weight: bold;
 
@@ -164,28 +172,32 @@ body
     font-weight: bold;
 }
 
+#poemAudio{
+    margin-top: 24px;
+}
+
 .container {
-    margin-top: 48px;
+    margin-top: 24px;
 }
 
 .sentence
 {
     margin-top: 4px;
     margin-bottom: 4px;
-    width:500px;
+    width:100%;
 }
 
-/*.sentence.active*/
-/*{*/
-    /*margin-top: 8px;*/
-    /*margin-bottom: 8px;*/
-    /*-webkit-transition: all 0.2s ease;*/
-    /*-moz-transition: all 0.2s ease;*/
-    /*-o-transition: all 0.2s ease;*/
-    /*transition: all 0.2s ease;*/
-    /*font-weight: bold;*/
-    /*color: #007777;*/
-/*}*/
+.sentence.active
+{
+margin-top: 8px;
+margin-bottom: 8px;
+-webkit-transition: all 0.2s ease;
+-moz-transition: all 0.2s ease;
+-o-transition: all 0.2s ease;
+transition: all 0.2s ease;
+font-weight: bold;
+color: #007777;
+}
 
 span.active {
     -webkit-transition: all 0.5s ease;
@@ -243,7 +255,8 @@ span.active {
 
 footer {
     text-align: center;
-    padding-top: 200px;
+    padding-top: 300px;
+    padding-bottom: 50px;
     height: 300px;
 }
 
@@ -252,35 +265,11 @@ h1 {
     font-weight: bold;
     margin-bottom: 24px;
 }
-.activated
+.background,.analysis
 {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    font-weight: bold;
-    color: #007777;
+    padding-top: 75px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*#poemAudio*/
+/*{*/
+    /*display: none;*/
+/*}*/

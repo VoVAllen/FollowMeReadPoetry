@@ -89,7 +89,8 @@ $(document).ready(
             });
         });
 
-function onScroll(event) {
+function onScroll(event)
+{
     var scrollPos = $(document).scrollTop();
 
     $('#sidebar a').each(function () {
