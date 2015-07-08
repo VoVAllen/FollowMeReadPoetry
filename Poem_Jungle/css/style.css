@@ -184,19 +184,17 @@ body
 {
     margin-top: 4px;
     margin-bottom: 4px;
+    margin-left:80px;
     width:100%;
 }
 
 .sentence.active
 {
-margin-top: 8px;
-margin-bottom: 8px;
--webkit-transition: all 0.2s ease;
--moz-transition: all 0.2s ease;
--o-transition: all 0.2s ease;
-transition: all 0.2s ease;
-font-weight: bold;
-color: #007777;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 50%;
+    font-weight: bold;
+    color: #007777;
 }
 
 span.active {
@@ -212,14 +210,6 @@ span.active {
     height: 100px;
     background-color: #fff;
     bottom: 0px;
-}
-
-.btn {
-    position: fixed;
-    left: 0px;
-    bottom: 10px;
-    float: left;
-    width: 50px;
 }
 
 .card {
@@ -273,3 +263,18 @@ h1 {
 /*{*/
     /*display: none;*/
 /*}*/
+/*.btn*/
+/*{*/
+    /*position: fixed;*/
+    /*height:50%;*/
+/*}*/
+
+.btn
+{
+    position: fixed;
+    left: 0px;
+    bottom: 10px;
+    float: left;
+    width: 50px;
+    height: 50%;
+}

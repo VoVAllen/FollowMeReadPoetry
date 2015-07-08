@@ -9,6 +9,7 @@ if(!sessionStorage.time)
 {
     sessionStorage.time=0;
 }
+windowHeight = (typeof window.outerHeight != 'undefined') ? Math.max(window.outerHeight, $(window).height()) : $(window).height();
 var a="\
     [00:29.40]Two roads diverged in a yellow wood,\
     [00:34.79]And sorry I could not travel both\
@@ -73,14 +74,17 @@ function update()
         {
             $(this).removeClass('active');
         });
+        var target = event.target.id;
+        var $target = $('#'+target);
         var index = parseInt(event.target.id);
         var time = timeArray[index];
         //var all = document.getElementById('allLyrics');
+        //all.innerHTML += $target.offset().top;
         var audio = document.getElementById('poemAudio');
         audio.currentTime = time;
-        audio.pause();
+        //audio.pause();
     });
-    var i=getcurrent();
+    var i=getCurrent();
     var j=i-1;
     if($('#'+j) != null)
     {
@@ -90,18 +94,37 @@ function update()
     {
         $('#'+i).addClass('active');
     }
+    $('html body').stop().animate
+    (
+        {'scrollTop': $('#'+i).offset().top-windowHeight/2},
+        900, 'swing', function ()
+        {
+            var offset = $('#'+i).offset().top-windowHeight/2;
+            if(offset>0)
+            {
+                window.scrollTo(0,offset);
+            }
+        }
+    );
 }
 //Sidebar button controlling the audio
 function btnControl()
 {
-    var $audio = $('#poemAudio');
-    $('#control').click(function()
+    var $audio = document.getElementById('#poemAudio');
+    $('#playBtn').click(function()
     {
-       $audio.play();
+        if(audio.paused)
+        {
+            audio.play();
+        }
+        else
+        {
+            audio.pause();
+        }
     });
 }
 //Compare the audio time with lyrics time and get current lyrics
-function getcurrent()
+function getCurrent()
 {
     var au=document.getElementById("poemAudio");
     var allLyrics=document.getElementById("allLyrics");
