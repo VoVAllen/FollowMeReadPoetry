@@ -2,17 +2,14 @@
  * Created by Zeng on 2015/7/2.
  */
 
-//sessionStorage from HTML5
+//这个，存储调节的时间值
+//sessionStorage是HTML5的新东西
 //sessionStorage代表着实际歌词时间和lrc歌词时间差
 if(!sessionStorage.time)
 {
     sessionStorage.time=0;
 }
-
-//Variables for lyrics alignment
-//windowHeight = (typeof window.outerHeight != 'undefined') ? Math.max(window.outerHeight, $(window).height()) : $(window).height();
-
-//lyrics
+windowHeight = (typeof window.outerHeight != 'undefined') ? Math.max(window.outerHeight, $(window).height()) : $(window).height();
 var a="\
     [00:29.40]Two roads diverged in a yellow wood,\
     [00:34.79]And sorry I could not travel both\
@@ -34,11 +31,6 @@ var a="\
     [02:03.00]And that has made all the difference.";
 var timeArray=new Array();
 var lyricsArray=new Array();
-//use scrollState to manage scrolling gesture and avoid multiple input
-var scrollState = false;
-//use intervalControl to set up and clear setInterval
-var intervalControl;
-
 //Parse the lyrics and separate time and lyrics
 //Put time into timeArray and access by timeArray[i]
 //Put lyrics into lyricsArray and access by lyricsArray[i]
@@ -71,107 +63,65 @@ function parse(lrc)
     {
         allLyrics.innerHTML += '<p class="sentence" id="'+i+'">'+lyricsArray[i]+'</p>';
     }
+    //Timer will update lyrics every 1 second
+    setInterval(update,1000);
 }
 function update()
 {
-    var audio = document.getElementById('poemAudio');
-    var btn = document.getElementById('playBtn');
-    tapState = false;
-    //tap true stands for user has tapped a sentence
     $('.sentence').click(function(event)
     {
         $('.sentence').each(function()
         {
             $(this).removeClass('active');
         });
+        var target = event.target.id;
+        var $target = $('#'+target);
         var index = parseInt(event.target.id);
         var time = timeArray[index];
         //var all = document.getElementById('allLyrics');
-        //all.innerHTML += '<p>'+ +'</p>';
+        //all.innerHTML += $target.offset().top;
+        var audio = document.getElementById('poemAudio');
         audio.currentTime = time;
-        audio.pause();
-        btn.src = "image/btn.png";
+        //audio.pause();
     });
-    //get the current sentence and hightlight
     var i=getCurrent();
     var j=i-1;
-    if($('#'+j) !== null)
+    if($('#'+j) != null)
     {
         $('#'+j).removeClass('active');
     }
-    if($('#'+i) !== null)
+    if($('#'+i) != null)
     {
         $('#'+i).addClass('active');
     }
-    //when audio paused it's always in the reading mode
-    if (audio.paused)
-    {
-        setCenter($('#'+i));
-        clearInterval(intervalControl);
-    }
-    //when audio is playing, detect the scrolling gesture
-    else
-    {
-        setCenter($('#'+i));
-        //This part avoids multiple return value when scroll gesture happens
-        $(window).scroll(function()
+    $('html body').stop().animate
+    (
+        {'scrollTop': $('#'+i).offset().top-windowHeight/2},
+        900, 'swing', function ()
         {
-            clearTimeout($.data(this, 'scrollTimer'));
-            $.data(this, 'scrollTimer', setTimeout(function()
+            var offset = $('#'+i).offset().top-windowHeight/2;
+            if(offset>0)
             {
-                scrollState = true;
-            }, 250));
-        });
-        //only when the last scrolling gesture stops, the time counting starts
-        if(scrollState)
-        {
-            $('html body').stop();
-            setTimeout(function()
-            {
-                i = getCurrent();
-                if($('#'+i) !== null)
-                {
-                    setCenter($('#'+i));
-                }
-                scrollState = false;
-            },3000);
+                window.scrollTo(0,offset);
+            }
         }
-    }
-}
-//center the playing sentence on screen
-function setCenter($target)
-{
-    if($target.length != 0)
-    {
-        var offset = $target.offset().top - window.innerHeight / 2;
-        if (offset>0)
-        {
-            $('html, body').stop().animate
-            (
-                {'scrollTop': ($target.offset().top - window.innerHeight / 2)},
-                600, 'swing'
-            );
-        }
-
-    }
+    );
 }
 //Sidebar button controlling the audio
 function btnControl()
 {
-    var $audio = document.getElementById('poemAudio');
-    var btn = document.getElementById('playBtn');
-    if($audio.paused == false)
+    var $audio = document.getElementById('#poemAudio');
+    $('#playBtn').click(function()
     {
-        $audio.pause();
-        btn.src = "image/btn.png";
-        clearInterval(intervalControl);
-    }
-    else
-    {
-        $audio.play();
-        btn.src = "image/btn-a.png";
-        intervalControl = setInterval(update,1000);
-    }
+        if(audio.paused)
+        {
+            audio.play();
+        }
+        else
+        {
+            audio.pause();
+        }
+    });
 }
 //Compare the audio time with lyrics time and get current lyrics
 function getCurrent()
@@ -196,6 +146,4 @@ function getCurrent()
 $(function()
 {
     parse(a);
-    //Timer will update lyrics every 1 second
-    intervalControl = setInterval(update,1000);
 });

@@ -172,9 +172,7 @@ body
     font-weight: bold;
 }
 
-#poemAudio
-{
-    display: none;
+#poemAudio{
     margin-top: 24px;
 }
 
@@ -279,9 +277,4 @@ h1 {
     float: left;
     width: 50px;
     height: 50%;
-    z-index: 1000;
-}
-.hightlight
-{
-    height:50%;
 }
